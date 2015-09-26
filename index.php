@@ -2,16 +2,15 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title> Gra </title>
+		<title>Pump Ball</title>
 		<style type="text/css">
 			#myCanvas{
-				background: #DDD;
+				background: #ddd;
 			}
 		</style>
 	</head>
-	<canvas id="myCanvas" width="350" height="500">
-	</canvas>
 	<body>
-			<script src="canvas.js"></script>
+	<canvas id="myCanvas" width="550" height="500"></canvas>
+	<script src="canvas.js"></script>
 	</body>
 </html>

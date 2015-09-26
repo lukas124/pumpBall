@@ -1,6 +1,6 @@
 var c=document.getElementById("myCanvas");
 var ctx=c.getContext("2d");
-var x = 100;
+var x = Math.random()*(c.width-20) + 20;
 var y = 74;
 var dx = 2;
 var dy = 2;

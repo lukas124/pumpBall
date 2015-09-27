@@ -1,11 +1,19 @@
 var c             = document.getElementById("myCanvas");
 var ctx           = c.getContext("2d");
 var x             = 100;
+<<<<<<< HEAD
 var y             = 150;
 var dx            = 2;
 var dy            = 2;
 var radius        = 20;
 var palette_start = 300;
+=======
+var y             = 74;
+var dx            = 2;
+var dy            = 2;
+var radius        = 20;
+var palette_start = 100;
+>>>>>>> bb6e4bedc2e6aa916ae46d676ad08394e47b30af
 var palette_end   = palette_start + 170;
 
 function drowCircle(x,y) {
@@ -71,6 +79,7 @@ function checkKey() {
 }
 
 function game() {
+<<<<<<< HEAD
   ctx.clearRect(0, 0, c.width, c.height);
   drowCircle(x,y);
   drowSquere();
@@ -96,6 +105,8 @@ for (var i = 0; i < 3; i++) {
   }
 }
 function game(){
+=======
+>>>>>>> bb6e4bedc2e6aa916ae46d676ad08394e47b30af
   ctx.clearRect(0, 0, c.width, c.height);
   drowCircle(x,y);
   drowSquere();

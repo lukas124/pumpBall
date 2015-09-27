@@ -1,0 +1,8 @@
+html{
+  width: 100%
+}
+#myCanvas{
+  display: block;
+  background: #DDD;
+  margin: 50px auto;
+}

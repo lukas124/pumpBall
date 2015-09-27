@@ -3,13 +3,10 @@
 	<head>
 		<meta charset="utf-8">
 		<title> Gra </title>
-		<style type="text/css">
-			#myCanvas{
-				background: #DDD;
-			}
-		</style>
+		<link rel="stylesheet" href="style.css" media="screen"  charset="utf-8"></link>
+
 	</head>
-	<canvas id="myCanvas" width="350" height="500">
+	<canvas id="myCanvas" width="750" height="500">
 	</canvas>
 	<body>
 			<script src="canvas.js"></script>

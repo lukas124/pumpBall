@@ -1,18 +1,18 @@
-var c=document.getElementById("myCanvas");
-var ctx=c.getContext("2d");
-var x = Math.random()*(c.width-20) + 20;
-var y = 74;
-var dx = 2;
-var dy = 2;
-var radius = 20;
-var palette_start = 100;
-var palette_end = palette_start + 150;
+var c             = document.getElementById("myCanvas");
+var ctx           = c.getContext("2d");
+var x             = 100;
+var y             = 150;
+var dx            = 2;
+var dy            = 2;
+var radius        = 20;
+var palette_start = 300;
+var palette_end   = palette_start + 170;
 
-function drowCircle(x,y){
+function drowCircle(x,y) {
   ctx.beginPath();
-  ctx.arc(x,y,radius,0,2*Math.PI);
+  ctx.arc(x, y, radius, 0, 2*Math.PI);
   ctx.stroke();
-  ctx.fillStyle="red";
+  ctx.fillStyle = "red";
   ctx.fill();
 }
 
@@ -20,22 +20,27 @@ function colisionDetect() {
   if ((x - radius) <= 0) {
     dx = -dx;
   }
+
   if ((x + radius) >= c.width) {
     dx = -dx;
   }
+
   if ((y - radius) <= 0) {
     dy = -dy;
   }
+
   if ((y + radius) > c.height) {
-    document.getElementById("myCanvas").style.background = "red";
+    document.getElementById("myCanvas").style.background = "#ddd";
     ctx.font = "30px Arial";
-    ctx.fillStyle = 'white';
-    ctx.fillText("Game Over",10,50);
+    ctx.fillStyle = 'green';
+    ctx.fillText("Game Over!", 180, 100);
   }
+
   if ((y + radius) == 460  && x <= palette_end && x >= palette_start) {
     dy = -dy;
   }
 }
+
 function drowSquere() {
   ctx.beginPath();
   ctx.rect(palette_start, 460, 150, 15);
@@ -46,9 +51,10 @@ function drowSquere() {
 }
 
 var keyState = {};
-window.addEventListener('keydown',function(e){
+window.addEventListener('keydown',function(e) {
     keyState[e.keyCode || e.which] = true;
 },true);
+
 window.addEventListener('keyup',function(e){
     keyState[e.keyCode || e.which] = false;
 },true);
@@ -64,10 +70,53 @@ function checkKey() {
    }
 }
 
+function game() {
+  ctx.clearRect(0, 0, c.width, c.height);
+  drowCircle(x,y);
+  drowSquere();
+  colisionDetect();
+  checkKey();
+
+  x += dx;
+  y += dy;
+}
+
+function drowRects(colide) {
+  this.colide = colide;
+  this.changeStatus = function () {
+    this.colide = true;
+  }
+}
+
+var array = new Array(3);
+for (var i = 0; i < 3; i++) {
+  array[i] = new Array(7);
+  for (var j = 0; j < 6; j++) {
+    array[i][j]= new drowRects(false);
+  }
+}
 function game(){
   ctx.clearRect(0, 0, c.width, c.height);
   drowCircle(x,y);
   drowSquere();
+  for (var i = 0; i < 3; i++) {
+    for (var j = 0; j < 6; j++) {
+      if (array[i][j].colide != true && x + radius >= (j*100 + 75) && x - radius <= (j*100 + 175) && y - radius == (i*40 + 40)) {
+        dy = -dy
+        array[i][j].changeStatus();
+      } else if (array[i][j].colide != true && x + radius >= (j*100 + 75) && x - radius <= (j*100 + 175) && y - radius <= (i*40 + 40) && y - radius >= (i*40) ){
+        dx = -dx
+        array[i][j].changeStatus();
+      }
+      if(array[i][j].colide != true){
+        ctx.beginPath();
+        ctx.rect(j*100 + 75, i*40, 100, 40);
+        ctx.fillStyle = '#555';
+        ctx.fill();
+      }
+    }
+  }
+
   colisionDetect();
   checkKey();
 

@@ -1,6 +1,6 @@
 var c             = document.getElementById("myCanvas");
 var ctx           = c.getContext("2d");
-var x             = 100;
+var x             = Math.random() * 450 + 150;
 var y             = 150;
 var dx            = 2;
 var dy            = 2;
@@ -11,8 +11,7 @@ var palette_end   = palette_start + 170;
 function drowCircle(x,y) {
   ctx.beginPath();
   ctx.arc(x, y, radius, 0, 2*Math.PI);
-  ctx.stroke();
-  ctx.fillStyle = "red";
+  ctx.fillStyle = "#3498db";
   ctx.fill();
 }
 
@@ -31,12 +30,9 @@ function colisionDetect() {
 
   if ((y + radius) > c.height) {
     document.getElementById("myCanvas").style.background = "#ddd";
-    ctx.font = "30px Arial";
-    ctx.fillStyle = 'green';
-    ctx.fillText("Game Over!", 180, 100);
   }
 
-  if ((y + radius) == 460  && x <= palette_end && x >= palette_start) {
+  if ((y + radius) == 460  && x <= palette_end && x >= palette_start - radius) {
     dy = -dy;
   }
 }
@@ -49,7 +45,6 @@ function drowSquere() {
   //ctx.strokeStyle = 'black';
   //ctx.stroke();
 }
-
 var keyState = {};
 window.addEventListener('keydown',function(e) {
     keyState[e.keyCode || e.which] = true;
@@ -70,17 +65,6 @@ function checkKey() {
    }
 }
 
-function game() {
-  ctx.clearRect(0, 0, c.width, c.height);
-  drowCircle(x,y);
-  drowSquere();
-  colisionDetect();
-  checkKey();
-
-  x += dx;
-  y += dy;
-}
-
 function drowRects(colide) {
   this.colide = colide;
   this.changeStatus = function () {
@@ -95,33 +79,73 @@ for (var i = 0; i < 3; i++) {
     array[i][j]= new drowRects(false);
   }
 }
-function game(){
+function stopInterval(){
   ctx.clearRect(0, 0, c.width, c.height);
-  drowCircle(x,y);
-  drowSquere();
-  for (var i = 0; i < 3; i++) {
-    for (var j = 0; j < 6; j++) {
-      if (array[i][j].colide != true && x + radius >= (j*100 + 75) && x - radius <= (j*100 + 175) && y - radius == (i*40 + 40)) {
-        dy = -dy
-        array[i][j].changeStatus();
-      } else if (array[i][j].colide != true && x + radius >= (j*100 + 75) && x - radius <= (j*100 + 175) && y - radius <= (i*40 + 40) && y - radius >= (i*40) ){
-        dx = -dx
-        array[i][j].changeStatus();
-      }
-      if(array[i][j].colide != true){
-        ctx.beginPath();
-        ctx.rect(j*100 + 75, i*40, 100, 40);
-        ctx.fillStyle = '#555';
-        ctx.fill();
-      }
+  document.getElementById('myCanvas').style.background = '#e74c3c';
+  document.getElementById('gameover').style.display = 'block';
+  for(i=0; i<100; i++)
+    {
+      clearInterval(i);
     }
-  }
-
-  colisionDetect();
-  checkKey();
-
-  x += dx;
-  y += dy;
 }
 
-setInterval(game, 3);
+function game(){
+  if (y - radius > c.height) {
+    stopInterval();
+  } else {
+    ctx.clearRect(0, 0, c.width, c.height);
+    drowCircle(x,y);
+    drowSquere();
+    for (var i = 0; i < 3; i++) {
+      for (var j = 0; j < 6; j++) {
+        if (array[i][j].colide != true && x >= (j*100 + 75) && x <= (j*100 + 175) && y - radius == (i*40 + 40)) {
+          dy = -dy
+          array[i][j].changeStatus();
+        }
+        if (array[i][j].colide != true && x + radius >= (j*100 + 75) && x - radius <= (j*100 + 175) && y  <= (i*40 + 40) && y >= (i*40) ){
+          dx = -dx
+          array[i][j].changeStatus();
+        }
+        if(array[i][j].colide != true){
+          ctx.beginPath();
+          ctx.rect(j*100 + 75, i*40, 96, 36);
+          ctx.strokeStyle='#34495e';
+          ctx.lineWidth=5;
+          ctx.stroke();
+          ctx.fillStyle = '#2c3e50';
+          ctx.fill();
+        }
+      }
+    }
+    colisionDetect();
+    checkKey();
+    x += dx;
+    y += dy;
+  }
+}
+
+function Interval() {
+  var interval = setInterval(game, 5);
+  return interval;
+}
+
+function gameInit(){
+    game();
+    setTimeout(function(){var IntervalID = setInterval(game, 5);},1000);
+    document.getElementById('myCanvas').style.background = '#ecf0f1';
+    document.getElementById('play').style.display = 'none';
+}
+
+function restartGame() {
+  document.getElementById('gameover').style.display = 'none';
+  document.getElementById('myCanvas').style.background = '#ecf0f1';
+  y = 150;
+  x = Math.random() * 450 + 150;
+  gameInit();
+  for (var i = 0; i < 3; i++) {
+    array[i] = new Array(7);
+    for (var j = 0; j < 6; j++) {
+      array[i][j]= new drowRects(false);
+    }
+  }
+}

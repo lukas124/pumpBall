@@ -1,0 +1,76 @@
+@import "partials/base"
+
+html
+  width: 100%
+  background: #1abc9c
+  color: white
+  text-align: center
+#myCanvas
+  display: block
+  background: darken(#1abc9c, 10%)
+  margin: 50px auto
+  transition: (1000ms all)
+h1
+  font-size: 65px
+  margin: 5px auto -30px auto
+  font-family: lato_regular
+  color: white
+h4
+  font-family: lato_light
+  font-size: 16px
+  margin-top: 0px
+h2
+  font-family: lato_black
+  font-size: 60px
+h3
+  font-family: lato_regular
+  font-size: 40px
+  margin-top: -20px
+ul
+  list-style-type: none
+  width: 240px
+  display: block
+  margin: 20px auto
+  padding: 0
+  li
+    float: left
+    width: 80px
+    margin-bottom: 50px
+    img
+      width: 50px
+      display: block
+      margin: 0 auto
+      transition: (200ms all)
+      &:hover
+        transform: scale(1.2)
+#play
+  position:relative
+  margin: 0
+  top: -200px
+  width: 140px
+  height: 45px
+  display: block
+  margin: 0 auto
+  font-family: lato_black
+  border: 4px solid white
+  color: white
+  background: #1abc9c
+
+#gameover
+  display: none
+  position:absolute
+  top: 150px
+  margin-left: auto
+  margin-right: auto
+  left: 0
+  right: 0
+
+  button
+    width: 140px
+    height: 45px
+    display: block
+    margin: 100px auto
+    font-family: lato_black
+    border: 4px solid white
+    color: white
+    background: #e74c3c

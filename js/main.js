@@ -6,24 +6,24 @@ var dx            = 2;
 var dy            = 2;
 var radius        = 20;
 var palette_start = 300;
-var points;
-var blockNumber = 0;
-var blockCrushed = 0;
-var blocksArray = new Array(3);
+var blockNumber   = 0;
+var blockCrushed  = 0;
+var blocksArray   = new Array(3);
+var points        = 0;
 
-
-function stopInterval(display,color,pointsPlace){
+function StopInterval(display,color,pointsPlace){
   ctx.clearRect(0, 0, c.width, c.height);
   document.getElementById('myCanvas').style.background = color;
-  document.getElementById(display).style.display = 'block';
-  document.getElementById(pointsPlace).innerHTML = points;
+  document.getElementById(display).style.display       = 'block';
+  document.getElementById(pointsPlace).innerHTML       = points;
+  
   for(i=0; i<100; i++)
     {
       clearInterval(i);
     }
 }
 
-function pointsCounter(show) {
+function PointsCounter(show) {
   if (show) {
     document.getElementById('score').innerHTML = points;
     document.getElementById('scoreCounter').style.display = 'block';

@@ -1,6 +1,6 @@
 //all function about collision
 
-function colisionDetect() {
+function Collision() {
   if ((x - radius) <= 0) {
     dx = -dx;
   }

@@ -1,10 +1,10 @@
 //all objects
 
 //balls
-var mainBall = new drowCircle(x,y);
+var mainBall = new Ball(x,y);
 
 //pallette
-var palette = new drowSquere(palette_start,150);
+var palette = new Squere(palette_start,150);
 
 //blocks
-buildLevel();
+BuildLevel();

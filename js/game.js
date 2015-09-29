@@ -37,7 +37,7 @@ function gameInit() {
     game();
     setTimeout(function(){var IntervalID = setInterval(game, 5);},1000);
     document.getElementById('myCanvas').style.background = '#ecf0f1';
-    document.getElementById('play').style.display = 'none';
+    document.getElementById('gameStart').style.display = 'none';
 }
 
 function restartGame() {
@@ -45,6 +45,7 @@ function restartGame() {
   document.getElementById('youwon').style.display = 'none';
   document.getElementById('myCanvas').style.background = '#ecf0f1';
   blockCrushed = 0;
+  blockNumber = 0;
   y = 150;
   x = Math.random() * 450 + 150;
   buildLevel();

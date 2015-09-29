@@ -17,6 +17,7 @@ function stopInterval(display,color,pointsPlace){
   document.getElementById('myCanvas').style.background = color;
   document.getElementById(display).style.display = 'block';
   document.getElementById(pointsPlace).innerHTML = points;
+  $("#"+display).addClass('animated zoomIn');
   for(i=0; i<100; i++)
     {
       clearInterval(i);

@@ -1,11 +1,10 @@
 //all function about blocks
 
-function Block(j,i,colide) {
+function block(j,i,colide) {
   this.colide = colide;
   this.changeStatus = function () {
     this.colide = true;
   }
-  
   this.drowBlock = function (j,i) {
     if(this.colide == false){
       ctx.beginPath();
@@ -17,7 +16,6 @@ function Block(j,i,colide) {
       ctx.fill();
     }
   }
-
   this.inGame = function () {
     if (this.colide != true && x >= (j*100 + 75) && x <= (j*100 + 175) && (y - radius == (i*40 + 40) || (y + radius == i*40))) {
       dy = -dy
@@ -39,11 +37,11 @@ function Block(j,i,colide) {
   }
 }
 
-function BuildLevel() {
+function buildLevel() {
   for (var i = 0; i < 3; i++) {
     blocksArray[i] = new Array(7);
     for (var j = 0; j < 6; j++) {
-      blocksArray[i][j] = new Block(j,i,false);
+      blocksArray[i][j] = new block(j,i,false);
       blockNumber++;
     }
   }

@@ -1,6 +1,6 @@
 //all function about palette
 
-function Squere(start,width) {
+function drowSquere(start,width) {
   this.start = start;
   this.end = this.start + 170;
   this.width = width;
@@ -21,7 +21,7 @@ window.addEventListener('keyup',function(e){
     keyState[e.keyCode || e.which] = false;
 },true);
 
-function CheckKey() {
+function checkKey() {
   if ((keyState[37] || keyState[65]) && palette.start > 0){
     palette.start -= 4;
     palette.end -= 4;

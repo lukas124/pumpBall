@@ -37,7 +37,7 @@ function GameInit() {
     Game();
     setTimeout(function(){var IntervalID = setInterval(Game, 5);},1000);
     document.getElementById('myCanvas').style.background = '#ecf0f1';
-    document.getElementById('play').style.display = 'none';
+    document.getElementById('gameStart').style.display = 'none';
 }
 
 function RestartGame() {

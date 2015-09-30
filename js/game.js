@@ -23,12 +23,11 @@ function game(){
         blocksArray[i][j].inGame();
       }
     }
-
     colisionDetect();
     checkKey();
-    x += dx;
-    y += dy;
   }
+  x += dx;
+  y += dy;
 }
 
 function gameInit() {

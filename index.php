@@ -16,21 +16,21 @@
 	<body>
 
 	<!---Title, Small score, Canvas !-->
-  <h1>Pump Ball</h1>
+  <h1>PUMP BALL</h1>
 	<h3 id="scoreCounter">Score: <span id="score"></span></h3>
 	<div class="canvas-size">
 		<canvas id="myCanvas" width="750" height="500" class="wow zoomIn select-level" ></canvas>
 	</div>
 
 	<!---Main menu !-->
-	<div id="main-menu" class="wow bounceIn close">
+	<div id="main-menu" class="wow zoomIn close">
 		<button type="button" name="Play" onclick="GameInit();">PLAY</button>
 		<button type="button" name="Play" onclick="LevelSelect();">LEVEL SELECT</button>
-		<button type="button" name="Play" onclick="Controlls();">CONTROLLS</button>
+		<button type="button" name="Play" onclick="ShowOnScreen('controlls','#17a689');">CONTROLLS</button>
 	</div>
 
 	<!---controlls !-->
-	<div id="controlls" class="wow bounceIn close">
+	<div id="controlls" class="close">
 		<h1>Controlls</h1>
 		<h3>To start game, just click "PLAY" button.</h3>
 		<div class="steering">
@@ -38,7 +38,8 @@
 			<h1> > </h1>
 			<h2>Move your paddle </h2>
 		</div>
-		<button type="button" name="Play" onclick="GameInit();">PLAY</button>
+		<button type="button" onclick="GameInit();">PLAY</button>
+		<button type="button" onclick="ShowOnScreen('main-menu','#1abc9c');">MENU</button>
 	</div>
 
 	<!---gameover screen !-->
@@ -46,20 +47,24 @@
   	<h2>Game Over!</h2>
 		<h3>Your Score: <span id="finalScore_1"></span></h3>
 		<h4>Don't give up! <br>Click "RESTART" button.</h3>
-		<button type="button" onclick="RestartGame();">RESTART</button>
+		<button type="button" onclick="GameInit();">RESTART</button>
+		<button type="button" onclick="ShowOnScreen('main-menu','#1abc9c');">MENU</button>
   </div>
 
 	<!---win screen !-->
 	<div id="you-won" class="close">
   	<h2>You Won!</h2>
 		<h3>Your Score: <span id="finalScore_2"></span></h3>
-		<button type="button" onclick="RestartGame();">RESTART</button>
+		<button type="button" onclick="GameInit();">NEXT</button>
+		<button type="button" onclick="ShowOnScreen('main-menu','#1abc9c');">MENU</button>
   </div>
 
 	<!---level locked screen !-->
 	<div class="level-locked select-level close">
-		<img src="images/lock27.png" alt="" />
-		<h1>Level <span class="level-numer"></span> Locked</h1>
+		<div class="locker">
+				<img src="images/lock27.png" alt="" />
+		</div>
+		<h1>Level <span class="level-numer"></span> locked</h1>
 		<h3>To unlock, finish previous level</h3>
 	</div>
 
@@ -79,7 +84,6 @@
 	</div>
 
 	<!---Footer !-->
-
 	<h4>Find Us</h4>
   <ul>
     <li><a href="#"><img src="images/facebook2.png" alt="" /></a></li>

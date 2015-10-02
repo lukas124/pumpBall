@@ -12,16 +12,13 @@ var blockNumber = 0;
 var blockCrushed = 0;
 var blocksArray = new Array(3);
 var levelNum = 1;
-var YourStage = 2;
+var YourStage = 1;
 
 
 function StopInterval(display,color,pointsPlace){
-  ctx.clearRect(0, 0, c.width, c.height);
-  document.getElementById('myCanvas').style.background = color;
-  document.getElementById(display).style.display = 'block';
   document.getElementById(pointsPlace).innerHTML = points;
-  $("#"+display).addClass('animated zoomIn');
-  for(i=0; i<100; i++)
+  ShowOnScreen(display,color)
+  for(i=0; i<1000; i++)
     {
       clearInterval(i);
     }
@@ -36,8 +33,10 @@ function PointsCounter(show) {
   }
 }
 
-function Controlls(){
+function ShowOnScreen(object,background) {
+  ctx.clearRect(0, 0, c.width, c.height);
   $(".close").hide();
-  document.getElementById('controlls').style.display = 'block';
-  document.getElementById('myCanvas').style.background = '#17a689';
+  $("#"+object).show();
+  $("#myCanvas").css({"background":background});
+  $("#"+object).addClass('animated zoomIn');
 }

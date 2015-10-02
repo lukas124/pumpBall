@@ -113,6 +113,11 @@ h3 {
   margin-top: 0px;
 }
 
+p {
+  clear: both;
+  font-size: 11px;
+}
+
 ul {
   list-style-type: none;
   width: 240px;
@@ -166,7 +171,7 @@ ul li img:hover {
 }
 
 #controlls .steering {
-  margin: 0px auto 50px auto;
+  margin: 0px auto 30px auto;
   position: relative;
   left: 30px;
 }
@@ -197,7 +202,7 @@ ul li img:hover {
   width: 160px;
   height: 55px;
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 10px auto;
   font-family: lato_black;
   border: 5px solid white;
   color: white;
@@ -229,16 +234,15 @@ ul li img:hover {
 #game-over h4, #you-won h4, #main-menu h4 {
   font-size: 22px;
   font-family: lato_light;
-  margin-top: 70px;
-  margin-bottom: 30px;
+  margin-top: 60px;
+  margin-bottom: 20px;
 }
 
 #game-over button, #you-won button, #main-menu button {
-  clear: both;
   width: 160px;
   height: 55px;
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 10px auto;
   font-family: lato_black;
   border: 5px solid white;
   color: white;
@@ -258,14 +262,12 @@ ul li img:hover {
   outline: none;
 }
 
-#you-won button {
-  background: #1abc9c;
-  margin-top: 100px;
+#you-won h3 {
+  margin-bottom: 100px;
 }
 
-p {
-  clear: both;
-  font-size: 11px;
+#you-won button {
+  background: #1abc9c;
 }
 
 #main-menu {
@@ -290,8 +292,16 @@ p {
   height: 500px;
 }
 
+.level-locked .locker, .level-unlocked .locker {
+  width: 128px;
+  height: 256px;
+  display: block;
+  margin: 0 auto;
+  transition: 200ms all;
+}
+
 .level-locked img, .level-unlocked img {
-  margin-top: 100px;
+  margin-top: 128px;
 }
 
 .level-locked h3, .level-unlocked h3 {

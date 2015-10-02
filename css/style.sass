@@ -7,14 +7,18 @@ html
   color: white
   text-align: center
   font-family: lato_light
+
 body
   overflow-x: hidden
+
 .canvas-size
   margin: 50px auto
   width: 750px
   height: 500px
+
 #myCanvas
   display: block
+
 .next,.prev
   display: none
   position: absolute
@@ -26,34 +30,48 @@ body
   background: darken(#1abc9c, 10%)
   color: #1abc9c
   cursor: pointer
+
   img
     display: block
     height: 45px
     margin: 15px 18px
+
 .next
   right: 50px
+
 .prev
   left: 50px
   @include transform(rotate(180deg))
+
 .select-level
   @include transition(300ms all $ease-out-circ)
+
 h1
   font-size: 65px
   margin: 20px auto -10px auto
   font-family: lato_regular
   color: white
+
 h4
   font-family: lato_light
   font-size: 16px
   margin-top: 0px
+
 h2
   font-family: lato_black
   font-size: 75px
   margin-bottom: 0
+
 h3
   font-family: lato_regular
   font-size: 40px
   margin-top: 0px
+
+p
+  clear: both
+  font-size: 11px
+
+
 ul
   list-style-type: none
   width: 240px
@@ -71,6 +89,7 @@ ul
       transition: (200ms all)
       &:hover
         transform: scale(1.2)
+
 #scoreCounter
   display: none
   position: absolute
@@ -78,6 +97,7 @@ ul
   right: 23%
   font-size: 25px
   font-family: lato_light
+
 #controlls
   display: none
   position:absolute
@@ -95,7 +115,7 @@ ul
     margin-bottom: -30px
 
   .steering
-    margin: 0px auto 50px auto
+    margin: 0px auto 30px auto
     position: relative
     left: 30px
     h1
@@ -116,13 +136,12 @@ ul
       position: relative
       left: -30px
 
-
   button
     clear: both
     width: 160px
     height: 55px
     display: block
-    margin: 0 auto
+    margin: 0 auto 10px auto
     font-family: lato_black
     border: 5px solid white
     color: white
@@ -148,15 +167,14 @@ ul
   h4
     font-size: 22px
     font-family: lato_light
-    margin-top: 70px
-    margin-bottom: 30px
+    margin-top: 60px
+    margin-bottom: 20px
 
   button
-    clear: both
     width: 160px
     height: 55px
     display: block
-    margin: 0 auto
+    margin: 0 auto 10px auto
     font-family: lato_black
     border: 5px solid white
     color: white
@@ -172,13 +190,10 @@ ul
       outline: none
 
 #you-won
+  h3
+    margin-bottom: 100px
   button
     background: #1abc9c
-    margin-top: 100px
-
-p
-  clear: both
-  font-size: 11px
 
 #main-menu
   display: block
@@ -197,8 +212,14 @@ p
   right: 0
   width: 750px
   height: 500px
+  .locker
+    width: 128px
+    height: 256px
+    display: block
+    margin: 0 auto
+    transition: (200ms all)
   img
-    margin-top: 100px
+    margin-top: 128px
   h3
     font-family: lato_light
     margin-top: 20px
@@ -229,5 +250,6 @@ p
 
 .level-unlocked
   background: rgba(0,0,0,.3)
+
 .level-locked
   background: rgba(0,0,0,.9)

@@ -11,6 +11,9 @@ function Game(){
     StopInterval('you-won','#3ee4c4','finalScore_2');
     PointsCounter(false);
     YourStage++;
+    if (levelNum != 10) {
+      levelNum++;
+    }
 
   } else {                                                //Inside the game
 
@@ -19,7 +22,6 @@ function Game(){
     mainBall.inGame(x,y);
     palette.inGame();
     level.inGame();
-
     ColisionDetect();
     CheckKey();
   }
@@ -30,34 +32,13 @@ function Game(){
 function GameInit() {
   points = 0;
   palette_start = 300;
-  Game();
-  setTimeout(function(){var IntervalID = setInterval(Game, 5);},1000);
-  document.getElementById('myCanvas').style.background = '#ecf0f1';
-  $(".close").hide();
-}
-
-function RestartGame() {
-  document.getElementById('myCanvas').style.background = '#ecf0f1';
   blockCrushed = 0;
   blockNumber = 0;
   y = 150;
   x = Math.random() * 450 + 150;
   level.buildLevel(levelNum);
-  GameInit();
-}
-
-function LevelSelect() {
-  $(".close").hide();
-  $(".prev").show();
-  $(".next").show();
-  if(YourStage >= levelNum) {
-    $(".level-unlocked").show();
-  } else {
-    $(".level-locked").show();
-  }
-  LevelNumScreen();
-  level.buildLevel(levelNum);
   Game();
-  $("#scoreCounter").hide();
-  $("#myCanvas").css({"background":"#ecf0f1"})
+  setTimeout(function(){var IntervalID = setInterval(Game, 5);},1000);
+  document.getElementById('myCanvas').style.background = '#ecf0f1';
+  $(".close").hide();
 }

@@ -36,11 +36,56 @@ html {
   font-family: lato_light;
 }
 
+body {
+  overflow-x: hidden;
+}
+
+.canvas-size {
+  margin: 50px auto;
+  width: 750px;
+  height: 500px;
+}
+
 #myCanvas {
   display: block;
+}
+
+.next, .prev {
+  display: none;
+  position: absolute;
+  top: 300px;
+  text-align: center;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
   background: #148f77;
-  margin: 50px auto;
-  transition: 1000ms all;
+  color: #1abc9c;
+  cursor: pointer;
+}
+
+.next img, .prev img {
+  display: block;
+  height: 45px;
+  margin: 15px 18px;
+}
+
+.next {
+  right: 50px;
+}
+
+.prev {
+  left: 50px;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.select-level {
+  -webkit-transition: 300ms all cubic-bezier(0.075, 0.82, 0.165, 1);
+  -moz-transition: 300ms all cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: 300ms all cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 h1 {
@@ -102,7 +147,8 @@ ul li img:hover {
   font-family: lato_light;
 }
 
-#gameStart {
+#controlls {
+  display: none;
   position: absolute;
   top: 150px;
   margin-left: auto;
@@ -112,20 +158,20 @@ ul li img:hover {
   width: 600px;
 }
 
-#gameStart h3 {
+#controlls h3 {
   font-size: 22px;
   font-family: lato_light;
   margin-top: 50px;
   margin-bottom: -30px;
 }
 
-#gameStart .steering {
+#controlls .steering {
   margin: 0px auto 50px auto;
   position: relative;
   left: 30px;
 }
 
-#gameStart .steering h1 {
+#controlls .steering h1 {
   display: block;
   border: 5px solid white;
   width: 50px;
@@ -138,7 +184,7 @@ ul li img:hover {
   margin: 40px 10px;
 }
 
-#gameStart .steering h2 {
+#controlls .steering h2 {
   font-size: 40px;
   padding: 45px 0px;
   font-family: lato_regular;
@@ -146,7 +192,7 @@ ul li img:hover {
   left: -30px;
 }
 
-#gameStart button {
+#controlls button {
   clear: both;
   width: 160px;
   height: 55px;
@@ -159,18 +205,18 @@ ul li img:hover {
   background: #1abc9c;
   cursor: pointer;
   transition: 100ms all;
-}
-
-#gameStart button:hover {
-  transform: scale(1.1);
-}
-
-#gameStart button:active {
-  transform: scale(1);
   outline: none;
 }
 
-#gameover, #youwon {
+#controlls button:hover {
+  transform: scale(1.1);
+}
+
+#controlls button:active {
+  transform: scale(1);
+}
+
+#game-over, #you-won, #main-menu {
   display: none;
   position: absolute;
   top: 150px;
@@ -180,14 +226,14 @@ ul li img:hover {
   right: 0;
 }
 
-#gameover h4, #youwon h4 {
+#game-over h4, #you-won h4, #main-menu h4 {
   font-size: 22px;
   font-family: lato_light;
   margin-top: 70px;
   margin-bottom: 30px;
 }
 
-#gameover button, #youwon button {
+#game-over button, #you-won button, #main-menu button {
   clear: both;
   width: 160px;
   height: 55px;
@@ -200,22 +246,93 @@ ul li img:hover {
   background: #e74c3c;
   cursor: pointer;
   transition: 100ms all;
+  outline: none;
 }
 
-#gameover button:hover, #youwon button:hover {
+#game-over button:hover, #you-won button:hover, #main-menu button:hover {
   transform: scale(1.1);
 }
 
-#gameover button:active, #youwon button:active {
+#game-over button:active, #you-won button:active, #main-menu button:active {
   transform: scale(1);
   outline: none;
 }
 
-#youwon button {
-  background: #3ee4c4;
+#you-won button {
+  background: #1abc9c;
+  margin-top: 100px;
 }
 
 p {
   clear: both;
   font-size: 11px;
+}
+
+#main-menu {
+  display: block;
+  margin-top: 70px;
+}
+
+#main-menu button {
+  margin: 25px auto;
+  background: #1abc9c;
+}
+
+.level-locked, .level-unlocked {
+  display: none;
+  position: absolute;
+  top: 138px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  width: 750px;
+  height: 500px;
+}
+
+.level-locked img, .level-unlocked img {
+  margin-top: 100px;
+}
+
+.level-locked h3, .level-unlocked h3 {
+  font-family: lato_light;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.level-locked button, .level-unlocked button {
+  position: absolute;
+  bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  width: 160px;
+  height: 55px;
+  display: block;
+  font-family: lato_black;
+  border: 5px solid white;
+  color: white;
+  font-size: 18px;
+  background: #1abc9c;
+  cursor: pointer;
+  transition: 100ms all;
+  outline: none;
+}
+
+.level-locked button:hover, .level-unlocked button:hover {
+  transform: scale(1.1);
+}
+
+.level-locked button:active, .level-unlocked button:active {
+  transform: scale(1);
+  outline: none;
+}
+
+.level-unlocked {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.level-locked {
+  background: rgba(0, 0, 0, 0.9);
 }

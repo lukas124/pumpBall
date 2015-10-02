@@ -1,4 +1,5 @@
 @import "partials/base"
+@import "bourbon/bourbon"
 
 html
   width: 100%
@@ -6,11 +7,36 @@ html
   color: white
   text-align: center
   font-family: lato_light
+body
+  overflow-x: hidden
+.canvas-size
+  margin: 50px auto
+  width: 750px
+  height: 500px
 #myCanvas
   display: block
+.next,.prev
+  display: none
+  position: absolute
+  top: 300px
+  text-align: center
+  width: 75px
+  height: 75px
+  border-radius: 50%
   background: darken(#1abc9c, 10%)
-  margin: 50px auto
-  transition: (1000ms all)
+  color: #1abc9c
+  cursor: pointer
+  img
+    display: block
+    height: 45px
+    margin: 15px 18px
+.next
+  right: 50px
+.prev
+  left: 50px
+  @include transform(rotate(180deg))
+.select-level
+  @include transition(300ms all $ease-out-circ)
 h1
   font-size: 65px
   margin: 20px auto -10px auto
@@ -52,7 +78,8 @@ ul
   right: 23%
   font-size: 25px
   font-family: lato_light
-#gameStart
+#controlls
+  display: none
   position:absolute
   top: 150px
   margin-left: auto
@@ -103,13 +130,13 @@ ul
     background: #1abc9c
     cursor: pointer
     transition: (100ms all)
+    outline: none
     &:hover
       transform: scale(1.1)
     &:active
       transform: scale(1.0)
-      outline: none
 
-#gameover, #youwon
+#game-over, #you-won, #main-menu
   display: none
   position:absolute
   top: 150px
@@ -137,16 +164,70 @@ ul
     background: #e74c3c
     cursor: pointer
     transition: (100ms all)
+    outline: none
     &:hover
       transform: scale(1.1)
     &:active
       transform: scale(1.0)
       outline: none
 
-#youwon
+#you-won
   button
-    background: lighten(#1abc9c, 15%)
+    background: #1abc9c
+    margin-top: 100px
 
 p
   clear: both
   font-size: 11px
+
+#main-menu
+  display: block
+  margin-top: 70px
+  button
+    margin: 25px auto
+    background: #1abc9c
+
+.level-locked,.level-unlocked
+  display: none
+  position:absolute
+  top: 138px
+  margin-left: auto
+  margin-right: auto
+  left: 0
+  right: 0
+  width: 750px
+  height: 500px
+  img
+    margin-top: 100px
+  h3
+    font-family: lato_light
+    margin-top: 20px
+    font-size: 20px
+  button
+    position:absolute
+    bottom: 100px
+    margin-left: auto
+    margin-right: auto
+    left: 0
+    right: 0
+    width: 160px
+    height: 55px
+    display: block
+    font-family: lato_black
+    border: 5px solid white
+    color: white
+    font-size: 18px
+    background: #1abc9c
+    cursor: pointer
+    transition: (100ms all)
+    outline: none
+    &:hover
+      transform: scale(1.1)
+    &:active
+      transform: scale(1.0)
+      outline: none
+
+.level-unlocked
+  background: rgba(0,0,0,.3)
+.level-locked
+  background: rgba(0,0,0,.9)

@@ -6,7 +6,7 @@ var it = 0;
 */
 
 
-function colisionDetect() {
+function ColisionDetect() {
   if ((x - radius) <= 0) {
     dx = -dx;
   }
@@ -25,7 +25,7 @@ function colisionDetect() {
 
   if ((y + radius) == 460  && x <= palette.end && x >= palette.start - radius) {
     dy = -dy;
-    points++;
+    combo = 1;
     /*
     if(keyState[37] || keyState [39]){
       rotation=true;

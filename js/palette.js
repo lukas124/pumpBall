@@ -1,12 +1,12 @@
 //all function about palette
 
-function drowSquere(start,width) {
+function DrowSquere(start,width) {
   this.start = start;
-  this.end = this.start + 170;
   this.width = width;
+  this.end = this.start + this.width + radius;
   this.inGame = function () {
     ctx.beginPath();
-    ctx.rect(this.start, 460, this.width , 15);
+    ctx.rect(this.start, 460, this.width , 10);
     ctx.fillStyle = '#333';
     ctx.fill();
   }
@@ -21,8 +21,8 @@ window.addEventListener('keyup',function(e){
     keyState[e.keyCode || e.which] = false;
 },true);
 
-function checkKey() {
-  if ((keyState[37] || keyState[65]) && palette.start > 0){
+function CheckKey() {
+   if ((keyState[37] || keyState[65]) && palette.start > 0){
     palette.start -= 4;
     palette.end -= 4;
    }

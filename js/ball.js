@@ -1,6 +1,6 @@
 //all function about ball
 
-function drowCircle(x,y) {
+function DrowCircle(x,y) {
   this.x = x;
   this.y = y;
   this.inGame = function (x,y) {
